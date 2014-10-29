@@ -30,7 +30,7 @@ public class StuLoginActivity extends ActionBarActivity {
         {
         	@Override
         	public void onClick(View v){
-        		Intent i = new Intent(getApplicationContext(), StuMainActivity.class); 
+        		Intent i = new Intent(getApplicationContext(), InstrMainActivity.class); //StuMainActivity
         		startActivity(i);
         	}
         });

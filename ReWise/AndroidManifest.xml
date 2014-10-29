@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -25,14 +25,38 @@
         <activity
             android:name=".InstrLoginActivity"
             android:label="@string/title_activity_instr_login" >
+            <intent-filter>
+                <action android:name="android.intent.action.WEB_SEARCH" />
+
+                <category android:name="android.intent.category.APP_BROWSER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".StuLoginActivity"
             android:label="@string/title_activity_stu_login" >
+            <intent-filter>
+                <action android:name="android.intent.action.WEB_SEARCH" />
+
+                <category android:name="android.intent.category.APP_BROWSER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_signup" >
+            <intent-filter>
+                <action android:name="android.intent.action.WEB_SEARCH" />
+
+                <category android:name="android.intent.category.APP_BROWSER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".InstrMainActivity"
+            android:label="@string/title_activity_instr_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.WEB_SEARCH" />
+
+                <category android:name="android.intent.category.APP_BROWSER" />
+            </intent-filter>
         </activity>
     </application>
 
