@@ -1,16 +1,48 @@
 package com.example.rewise;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class StuLoginActivity extends ActionBarActivity {
-
+	Button btn_login, btn_signup;
+	EditText et_username, et_password;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stu_login);
+		
+        //INITIALIZING VIEW FIELDS
+        btn_login=(Button)findViewById(R.id.btn_login);
+        btn_signup=(Button)findViewById(R.id.btn_signup);
+        et_username= (EditText)findViewById(R.id.et_username);
+        et_password= (EditText)findViewById(R.id.et_password);
+        
+        //ONCLICK LISTENERS
+        
+        btn_login.setOnClickListener(new OnClickListener()
+        {
+        	@Override
+        	public void onClick(View v){
+        		Intent i = new Intent(getApplicationContext(), StuMainActivity.class); 
+        		startActivity(i);
+        	}
+        });
+        
+        btn_signup.setOnClickListener(new OnClickListener()
+        {
+        	@Override
+        	public void onClick(View v){
+        		Intent i = new Intent(getApplicationContext(), SignupActivity.class); 
+        		startActivity(i);
+        	}
+        });
 	}
 
 	@Override

@@ -5997,3 +5997,72 @@ Binding(ALT+SHIFT+ARROW_UP,
 
 !ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:39:30.677
 !MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:46:52.051
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:47:00.634
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:47:06.611
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:47:16.868
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:47:21.561
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:48:16.729
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:48:18.781
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:48:28.981
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:48:43.922
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:48:48.091
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:48:56.636
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:49:00.413
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:49:01.851
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:50:38.977
+!MESSAGE activity_instr_login.xml: Couldn't resolve resource @string/title_activity_instr_login
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:51:54.553
+!MESSAGE activity_instr_login.xml: Couldn't resolve resource @string/title_activity_instr_login
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:52:04.106
+!MESSAGE activity_instr_login.xml: Couldn't resolve resource @string/title_activity_instr_login
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:52:33.180
+!MESSAGE activity_instr_login.xml: Couldn't resolve resource @string/title_activity_instr_login
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:55:32.182
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:56:40.491
+!MESSAGE activity_instr_login.xml: Couldn't resolve resource @string/title_activity_instr_login
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:56:47.282
+!MESSAGE activity_stu_login.xml: Couldn't resolve resource @string/title_activity_stu_login
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:57:17.656
+!MESSAGE activity_stu_login.xml: Couldn't resolve resource @string/title_activity_stu_login
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 19:58:25.026
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-10-29 20:02:00.386
+!MESSAGE activity_signup.xml: Couldn't resolve resource @string/title_activity_signup

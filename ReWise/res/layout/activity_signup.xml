@@ -8,15 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.rewise.InstrLoginActivity" >
 
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="108dp"
-        android:text="Sign Up" />
-
     <TextView
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
@@ -69,5 +60,23 @@
         android:layout_marginTop="48dp"
         android:text="Enter Your Details"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/btn_stu_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:text="Sign Up as Student" />
+
+    <Button
+        android:id="@+id/btn_instr_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="Sign Up as instructor" />
 
 </RelativeLayout>
