@@ -38,6 +38,9 @@ public class InstrMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instr_main);
 
+        Intent view = getIntent();
+		String email_id = view.getStringExtra("email_id");
+		Toast.makeText(InstrMainActivity.this, "mEmail is "+ email_id, Toast.LENGTH_SHORT).show();
         mTitle = mDrawerTitle = getTitle();
         mnavdrawerTitles = getResources().getStringArray(R.array.navdrawers_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
