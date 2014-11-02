@@ -1,0 +1,15 @@
+package com.example.rewise;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class Temp extends Activity {
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	
+		setContentView(R.layout.temp);
+		super.onCreate(savedInstanceState);
+	}
+
+}

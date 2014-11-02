@@ -341,8 +341,8 @@ int id action_context_bar 0x7f08002f
 int id action_menu_divider 0x7f080028
 int id action_menu_presenter 0x7f080029
 int id action_mode_close_button 0x7f080036
-int id action_settings 0x7f08005d
-int id action_websearch 0x7f08005e
+int id action_settings 0x7f08005e
+int id action_websearch 0x7f08005f
 int id activity_chooser_view_content 0x7f080037
 int id always 0x7f08001e
 int id beginning 0x7f080023
@@ -353,6 +353,7 @@ int id btn_login 0x7f080052
 int id btn_signup 0x7f080053
 int id btn_stu_login 0x7f080059
 int id btn_stu_signup 0x7f08005b
+int id button1 0x7f08005d
 int id buyButton 0x7f08000a
 int id buy_now 0x7f08000f
 int id buy_with_google 0x7f08000e
@@ -459,6 +460,7 @@ int layout activity_stu_login 0x7f03001c
 int layout drawer_list_item 0x7f03001d
 int layout fragment_navdrawer 0x7f03001e
 int layout support_simple_spinner_dropdown_item 0x7f03001f
+int layout temp 0x7f030020
 int menu instr_login 0x7f0d0000
 int menu instr_main 0x7f0d0001
 int menu main_login 0x7f0d0002

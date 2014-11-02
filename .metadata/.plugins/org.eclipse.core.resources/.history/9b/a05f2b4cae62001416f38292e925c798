@@ -1,0 +1,101 @@
+package com.example.rewise;
+
+import java.util.ArrayList;
+
+public class Question {
+	String title;
+	ArrayList<String> options;
+	boolean isSingle;
+	ArrayList<Integer> correct;
+	boolean isInDB;
+	
+	public Question()
+	{
+		this.title="";
+		this.options=new ArrayList<String>();
+		this.isSingle=true;
+		this.correct=new ArrayList<Integer>();
+		this.isInDB=false;
+	}
+	
+	public Question(boolean isSingle)
+	{
+		this();
+		this.isSingle=isSingle;
+	}
+	
+	public String getTitle()
+	{
+		return title;
+	}
+	
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
+	
+	public ArrayList<String> getOptions()
+	{
+		return options;
+	}
+	
+	public void setOptions(ArrayList<String> options)
+	{
+		this.options = options;
+	}
+	
+	public boolean isSingle()
+	{
+		return isSingle;
+	}
+	
+	public void setSingle(boolean isSingle)
+	{
+		this.isSingle = isSingle;
+	}
+	
+	public ArrayList<Integer> getCorrectAnswers()
+	{
+		return correct;
+	}
+	
+	public void setCorrectAnswer(ArrayList<Integer> correct)
+	{
+		this.correct = correct;
+	}
+	
+	public void addCorrectAnswer(int pos)
+	{
+		if(!this.correct.contains(pos))
+		{
+			this.correct.add(pos);
+			return true;
+		}
+	}
+	
+	public void addOption(String option)
+	{
+		this.options.add(option);
+	}
+	
+	public String getOption(int pos)
+	{
+		return this.options.get(pos);
+	}
+	
+	public boolean deleteOption(String str)
+	{
+		if(this.options.contains(str))
+		{
+			this.options.remove(str);
+			return true;
+		}
+		return false;
+	}
+	
+	public void deleteAllOptions()
+	{
+		this.options.clear();
+	}
+	
+}

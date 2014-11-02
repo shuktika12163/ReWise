@@ -68,6 +68,17 @@
                 <category android:name="android.intent.category.APP_BROWSER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".Temp"
+            android:label="trial :P" >
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        
     </application>
 
 </manifest>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;delta&apos; in &apos;com.example.rewise.Quiz.setEndTime(...)&apos; to &apos;duration&apos;&#x0D;&#x0A;- Original project: &apos;ReWise&apos;&#x0D;&#x0A;- Original element: &apos;com.example.rewise.Quiz.setEndTime(int, int).delta&apos;&#x0D;&#x0A;- Renamed element: &apos;delta&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;delta&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.example.rewise{Quiz.java[Quiz~setEndTime~I~I@delta!1104!1125!1109!1113!J!0!false" name="duration" references="true" stamp="1414948461189" version="1.0"/>
+</session>
