@@ -1,7 +1,0 @@
-package com.example.rewise;
-
-import android.app.Activity;
-
-public class Temp extends Activity {
-
-}

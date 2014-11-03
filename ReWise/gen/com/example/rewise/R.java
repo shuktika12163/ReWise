@@ -1479,8 +1479,8 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f080028;
         public static final int action_menu_presenter=0x7f080029;
         public static final int action_mode_close_button=0x7f080036;
-        public static final int action_settings=0x7f08005e;
-        public static final int action_websearch=0x7f08005f;
+        public static final int action_settings=0x7f080061;
+        public static final int action_websearch=0x7f080062;
         public static final int activity_chooser_view_content=0x7f080037;
         public static final int always=0x7f08001e;
         public static final int beginning=0x7f080023;
@@ -1492,6 +1492,9 @@ containing a value of this type.
         public static final int btn_stu_login=0x7f080059;
         public static final int btn_stu_signup=0x7f08005b;
         public static final int button1=0x7f08005d;
+        public static final int button2=0x7f08005e;
+        public static final int button3=0x7f08005f;
+        public static final int button4=0x7f080060;
         public static final int buyButton=0x7f08000a;
         public static final int buy_now=0x7f08000f;
         public static final int buy_with_google=0x7f08000e;

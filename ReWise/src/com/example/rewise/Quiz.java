@@ -1,7 +1,15 @@
 package com.example.rewise;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+
+import android.os.Handler;
+import android.util.Log;
+
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 public class Quiz {
 	
@@ -13,16 +21,24 @@ public class Quiz {
 	ArrayList<Question> questions;
 	boolean isInDB;
 	boolean isTimed;
+	static ArrayList<Quiz> al;
+	static boolean once=false;
 	
 	public Quiz()
 	{
+		if(!once)
+		{
+			al=new ArrayList<Quiz>();
+			once=true;
+		}
 		this.code="";
 		this.name="";
-		this.starttime=null;
-		this.starttime=null;
+		this.starttime=Calendar.getInstance().getTime();
+		this.endtime=Calendar.getInstance().getTime();
 		this.isTimed=false;
-		this.questions.clear();
+		this.questions=new ArrayList<Question>();
 		this.isInDB=false;
+		al.add(this);
 	}
 	
 	public String getCode() {
@@ -77,7 +93,7 @@ public class Quiz {
 	{
 		if(!this.questions.contains(q))
 		{
-			this.questions.remove(q);
+			this.questions.add(q);
 			return true;
 		}
 		return false;
@@ -101,11 +117,6 @@ public class Quiz {
 		this.isTimed = isTimed;
 	}
 	
-	public void uploadToDB()
-	{
-		
-	}
-	
 	public void deleteQuizDB()
 	{
 		
@@ -116,6 +127,38 @@ public class Quiz {
 		
 	}
 	
+	public void uploadToDB()
+	{
+		final ParseObject obj = new ParseObject("Quizzes");
+		obj.put("Code", this.code);
+		obj.put("Name", this.name);
+		obj.put("StartTime", this.starttime);
+		obj.put("EndTime", this.endtime);
+		obj.put("isTimed", this.isTimed);
+		obj.saveInBackground(new SaveCallback() {
+			
+			@Override
+			public void done(ParseException e) {
+				setObjectId(obj.getString("Code"), obj.getObjectId());
+			}
+		});
+		this.isInDB=true;
+	}
 	
+	static private void setObjectId(final String title, final String objId)
+	{
+		for(Quiz q: al)
+		{
+			if(title==q.code)
+				q._id=objId;
+		}
+		new Handler().postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				Log.d("asd", title+objId);
+			}
+		}, 200);
+	}
 	
 }
