@@ -1,6 +1,6 @@
 package com.example.rewise;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class InstrLoginActivity extends ActionBarActivity {
+public class InstrLoginActivity extends Activity {
 	Button btn_login, btn_signup;
 	EditText et_username, et_password;
 	@Override

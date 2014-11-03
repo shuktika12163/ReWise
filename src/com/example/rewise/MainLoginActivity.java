@@ -2,8 +2,8 @@ package com.example.rewise;
 
 import com.google.android.gms.common.AccountPicker;
 
-import android.support.v7.app.ActionBarActivity;
 import android.accounts.AccountManager;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -18,7 +18,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 
-public class MainLoginActivity extends ActionBarActivity {
+public class MainLoginActivity extends Activity {
 	
 	static final int REQUEST_CODE_PICK_ACCOUNT_INSTR = 1000;
 	static final int REQUEST_CODE_PICK_ACCOUNT_STU = 1001;
