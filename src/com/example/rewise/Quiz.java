@@ -127,6 +127,10 @@ public class Quiz {
 		
 	}
 	
+	public void getAllQuizzes(){
+		
+	}
+	
 	public void uploadToDB()
 	{
 		final ParseObject obj = new ParseObject("Quizzes");

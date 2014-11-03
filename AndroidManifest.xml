@@ -21,62 +21,45 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:label="@string/app_name">
         <activity
             android:name=".MainLoginActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> 
         </activity>
         <activity
             android:name=".InstrLoginActivity"
             android:label="@string/title_activity_instr_login" >
-            <intent-filter>
-                <action android:name="android.intent.action.WEB_SEARCH" />
-
-                <category android:name="android.intent.category.APP_BROWSER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name=".StuLoginActivity"
             android:label="@string/title_activity_stu_login" >
-            <intent-filter>
-                <action android:name="android.intent.action.WEB_SEARCH" />
-
-                <category android:name="android.intent.category.APP_BROWSER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_signup" >
-            <intent-filter>
-                <action android:name="android.intent.action.WEB_SEARCH" />
-
-                <category android:name="android.intent.category.APP_BROWSER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name=".InstrMainActivity"
             android:label="@string/title_activity_instr_main" >
-            <intent-filter>
-                <action android:name="android.intent.action.WEB_SEARCH" />
-
-                <category android:name="android.intent.category.APP_BROWSER" />
-            </intent-filter>
+            
         </activity>
         
         <activity
             android:name=".Temp"
             android:label="trial :P" >
-            <!-- <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+             <intent-filter>
+                <action android:name="android.intent.action.DEFAULT" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
         </activity>
         
     </application>
