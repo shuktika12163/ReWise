@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:id="@+id/tvAbove"
+        style="bold|italic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvSlash"
+        android:layout_marginBottom="63dp"
+        android:layout_toLeftOf="@+id/tvSlash"
+        android:text="0"
+        android:textColor="@color/ourBlue"
+        android:textSize="150sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/tvSlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvBelow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="119dp"
+        android:text="/"
+        android:textSize="150sp" />
+
+    <TextView
+        android:id="@+id/tvBelow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvSlash"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="106dp"
+        android:layout_marginLeft="36dp"
+        android:text="0"
+        android:textColor="@color/ourBlue"
+        android:textSize="150sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/btnOK"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="OK" />
+
+</RelativeLayout>

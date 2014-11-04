@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.R.string;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
@@ -13,6 +14,7 @@ import com.parse.SaveCallback;
 public class Question {
 	String _id;
 	String title;
+	String category;
 	ArrayList<String> options;
 	boolean isSingle;
 	ArrayList<Integer> correct;
@@ -53,6 +55,11 @@ public class Question {
 		this.title = title;
 	}
 	
+	public void setCategory(String category)
+	{
+		this.category = category;
+	}
+	
 	public ArrayList<String> getOptions()
 	{
 		return options;
@@ -76,6 +83,10 @@ public class Question {
 	public ArrayList<Integer> getCorrectAnswers()
 	{
 		return correct;
+	}
+	public String getCategory()
+	{
+		return this.category;
 	}
 	
 	public void setCorrectAnswer(ArrayList<Integer> correct)

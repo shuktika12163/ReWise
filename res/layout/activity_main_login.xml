@@ -15,6 +15,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:textColor="#31AEDC"
+        android:textStyle="bold|italic"
         android:text="Sign up here" />
 
     <TextView
@@ -25,6 +27,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="Login as"
+        android:textColor="#31AEDC"
+        android:textStyle="bold|italic"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
@@ -34,6 +38,8 @@
         android:layout_below="@+id/tv_login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold|italic"
         android:text="Instructor" />
 
     <Button
@@ -43,6 +49,17 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btn_instr_login"
         android:layout_marginTop="18dp"
+        android:textColor="#31AEDC"
+        android:textStyle="bold|italic"
         android:text="Student" />
+    
+    <Button 
+        android:id="@+id/gotoQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#447711"
+        android:text="Quiz"/>
 
 </RelativeLayout>

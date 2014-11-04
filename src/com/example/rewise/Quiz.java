@@ -3,12 +3,15 @@ package com.example.rewise;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import android.os.Handler;
 import android.util.Log;
 
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
 public class Quiz {
@@ -16,12 +19,15 @@ public class Quiz {
 	String _id;
 	String code;
 	String name;
+	String category;
 	Date starttime;
 	Date endtime;
 	ArrayList<Question> questions;
 	boolean isInDB;
 	boolean isTimed;
 	static ArrayList<Quiz> al;
+	
+	static boolean received=false;
 	static boolean once=false;
 	
 	public Quiz()
@@ -61,9 +67,21 @@ public class Quiz {
 		return starttime;
 	}
 	
+	public void setCategory(String Category)
+	{
+		this.category=Category;
+	}
+	
+	
 	public void setStarttime(Date starttime) {
 		this.starttime = starttime;
 	}
+	
+	public String getCategory()
+	{
+		return this.category;
+	}
+	
 	
 	public Date getEndtime() {
 		return endtime;
@@ -127,10 +145,7 @@ public class Quiz {
 		
 	}
 	
-	public void getAllQuizzes(){
 		
-	}
-	
 	public void uploadToDB()
 	{
 		final ParseObject obj = new ParseObject("Quizzes");

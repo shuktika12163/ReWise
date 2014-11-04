@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gradient_start">#000000</color>
+    <color name="gradient_end">#000000</color>
+    <color name="ourBlue">#31AEDC</color>
+    <color name="ourGreen">#689F38</color>
+</resources>

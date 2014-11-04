@@ -5,6 +5,10 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Sarthak/Desktop/ReWise/Parse-1.5.1/Parse-1.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/adt-bundle-windows-x86_64-20140702/Parse-1.5.1/Parse-1.5.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/D:/adt-bundle-windows-x86_64-20140702/Parse-1.5.1/Parse-1.5.1-javadoc/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

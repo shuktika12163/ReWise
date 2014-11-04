@@ -11,11 +11,20 @@
     
     <string-array name="navdrawers_array">
         <item>Profile</item>
-        <item>Settings</item>
-        <item>Courses</item>
-        <item>Archive</item>
+        <item>Create Quiz</item>
+        <item>Upcoming</item>
+        <item>Past Quizzes</item>
+        <item>Question Bank</item>
+        <item>Preferences</item>
+        <item>Logout</item>
     </string-array>
 
+    <string-array name="courses">
+        <item>CSE320</item>
+        <item>CSE325</item>
+        <item>CSE311</item>
+    </string-array>
+    
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>

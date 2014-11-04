@@ -37,7 +37,9 @@ public class InstrMainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instr_main);
-
+        Constants.CourseToCategory.put("CSE320", "Networking");
+        Constants.CourseToCategory.put("CSE325", "DataBase");
+        Constants.CourseToCategory.put("CSE111", "Software");
         Intent view = getIntent();
 		String email_id = view.getStringExtra("email_id");
 		Toast.makeText(InstrMainActivity.this, "mEmail is "+ email_id, Toast.LENGTH_SHORT).show();
@@ -90,10 +92,8 @@ public class InstrMainActivity extends Activity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    /* Called whenever we call invalidateOptionsMenu() */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the nav drawer is open, hide action items related to the content view
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
@@ -101,18 +101,13 @@ public class InstrMainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-         // The action bar home/up action should open or close the drawer.
-         // ActionBarDrawerToggle will take care of this.
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        // Handle action buttons
         switch(item.getItemId()) {
         case R.id.action_websearch:
-            // create intent to perform web search for this navdrawer
             Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
             intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
-            // catch event that there's no activity to handle intent
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
             } else {
@@ -124,7 +119,6 @@ public class InstrMainActivity extends Activity {
         }
     }
 
-    /* The click listner for ListView in the navigation drawer */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -133,8 +127,26 @@ public class InstrMainActivity extends Activity {
     }
 
     private void selectItem(int position) {
+    	if(position==1){
+    		startActivity(new Intent(getApplicationContext(),CreateQuiz.class));
+    	}
+    	else if(position==2){
+    		startActivity(new Intent(getApplicationContext(),InstrShowQuiz.class));
+    	}
+    	else if(position==3){
+    		startActivity(new Intent(getApplicationContext(),InstrShowQuiz.class));
+    	}
+    	else if(position==4){
+    		startActivity(new Intent(getApplicationContext(),InstrShowQuestion.class));
+    	}
+    	else if(position==5){
+    		startActivity(new Intent(getApplicationContext(),ConfigureScreen.class));
+    	}
+    	else if(position==6){
+    		finish();
+    	}
         // update the main content by replacing fragments
-        Fragment fragment = new navdrawerFragment();
+        /*Fragment fragment = new navdrawerFragment();
         Bundle args = new Bundle();
         args.putInt(navdrawerFragment.ARG_navdrawer_NUMBER, position);
         fragment.setArguments(args);
@@ -145,7 +157,7 @@ public class InstrMainActivity extends Activity {
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
         setTitle(mnavdrawerTitles[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);
+        mDrawerLayout.closeDrawer(mDrawerList);*/
     }
 
     @Override

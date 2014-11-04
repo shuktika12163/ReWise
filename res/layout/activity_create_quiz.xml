@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:text="Create Quiz"
+        android:textColor="#31AEDC"
+        android:textStyle="bold|italic"/>
+
+    <Spinner
+        android:id="@+id/coursecode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/coursecodetitle"
+        android:layout_below="@+id/coursecodetitle" />
+
+    <Button
+        android:id="@+id/timebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/datebutton"
+        android:layout_below="@+id/setdate"
+        android:layout_marginTop="36dp"
+        android:text="Time"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/coursecodetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/settime"
+        android:layout_marginTop="17dp"
+        android:text="Course Code"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#31AEDC"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/coursecode"
+        android:layout_below="@+id/coursecode"
+        android:text="Quiz Name/Topic"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#31AEDC"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/nameofquiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="16dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/setdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/settime"
+        android:layout_centerVertical="true"
+        android:text="Set Date"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#31AEDC"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/settime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/timebutton"
+        android:layout_alignBottom="@+id/timebutton"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:text="Set Start Time"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#31AEDC"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/datebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView4"
+        android:text="Date"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold|italic" />
+
+</RelativeLayout>
