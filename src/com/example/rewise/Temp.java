@@ -1,14 +1,19 @@
 package com.example.rewise;
 
+import java.util.ArrayList;
+
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 public class Temp extends Activity {
 	
@@ -31,7 +36,10 @@ public class Temp extends Activity {
 		q.addOption("Something to write in our CV!");
 		q.addOption("Boredom");
 		q.addCorrectAnswer(0);
-		q.uploadToDB();
+		if(q.uploadToDB())
+			Toast.makeText(Temp.this, "done "+q._id, 0).show();
+		else
+			Toast.makeText(Temp.this, "not done "+q._id, 0).show();
 	}
 	
 	Question q2;
@@ -54,30 +62,24 @@ public class Temp extends Activity {
 		quiz=new Quiz();
 		quiz.setCode("DMB1");
 		quiz.setTimed(false);
+		quiz.setCategory("cat");
 		quiz.setName("DUMB SET 1");
 		quiz.uploadToDB();
 	}
 	
 	public void onClick4(View v)
 	{
-		Log.d("asd", "entered connect");
-		quiz.addQuestion(q);
-		quiz.addQuestion(q2);
-		for(Question qq:quiz.questions)
-		{
-			ParseObject obj = new ParseObject("MapQuizQuestions");
-			obj.put("QuizID", quiz._id);
-			obj.put("QuestionID", qq._id);
-			Log.d("asd","u");
-			obj.saveInBackground(new SaveCallback() {
-				
-				@Override
-				public void done(ParseException e) {
-					Log.d("asd","up");
-					
-				}
-			});
-		}
+		Quiz q=new Quiz();
+		q._id="zpBlhPnQJU";
+		q.downloadQsFromDB();
+		for(Question qq:q.getQuestions())
+			Toast.makeText(this, qq.getTitle(), 0).show();
+		
+		
+//		Log.d("asd", "entered connect");
+//		quiz.addQuestion(q);
+//		quiz.addQuestion(q2);
+//		quiz.uploadQsToDB();
 	}
 
 }

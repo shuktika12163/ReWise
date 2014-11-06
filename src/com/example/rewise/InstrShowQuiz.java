@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
@@ -50,6 +51,16 @@ public class InstrShowQuiz extends Activity implements OnItemClickListener{
         list.setAdapter( adapter );
 		
 	}
+	
+	ProgressDialog pd;
+	 public void initPD() {
+			pd=new ProgressDialog(InstrShowQuiz.this);
+			pd.setTitle("Please Wait...");
+			pd.setMessage("Fetching Quizzes");
+			pd.setIndeterminate(true);
+			pd.setCancelable(false);
+		}
+	
 	public void setListData()
     {  
 		new RemoteDataTask().execute();
@@ -67,46 +78,21 @@ public class InstrShowQuiz extends Activity implements OnItemClickListener{
 	 private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
 	        @Override
 	        protected void onPreExecute() {
+	        	initPD();
+	        	pd.show();
 	        }
 	 
 	        @Override
 	        protected Void doInBackground(Void... params) {
-	            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Quizzes");
-	            query.orderByDescending("_created_at");
-	            try {
-	                ob = query.find();
-	            } catch (ParseException e) {
-	                Log.e("Error", e.getMessage());
-	                e.printStackTrace();
-	            }
+	        	CustomListViewValuesArr.clear();
+	            CustomListViewValuesArr.addAll(Quiz.downloadAllQuizzesFromDB());
 	            return null;
 	        }
 	 
-	        @SuppressLint("SimpleDateFormat")
 			@Override
 	        protected void onPostExecute(Void result) {
-	            for (ParseObject quiz : ob) {
-	            	final Quiz sched = new Quiz();
-	                sched.setCode(quiz.get("Code").toString());
-	                sched.setName(quiz.get("Name").toString());
-	                sched.setCategory(quiz.get("Category").toString());
-//	                SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy, kk:mm");
-//	            	try {
-//						tempchange.endtime=format.parse(quiz.get("EndTime").toString());
-//					} catch (java.text.ParseException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//	            	try {
-//						tempchange.starttime=format.parse(quiz.get("StartTime").toString());
-//					} catch (java.text.ParseException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-	            	//tempchange.isTimed=Boolean.parseBoolean(quiz.get("isTimed").toString());
-	                CustomListViewValuesArr.add( sched );
-	            }
 	            adapter.notifyDataSetChanged();
+	            pd.dismiss();
 	            Log.e("as", "The End!");
 
 	        }

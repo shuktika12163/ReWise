@@ -76,7 +76,7 @@ public class MainLoginActivity extends Activity {
         btn_quiz.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(),AttemptQuizActivity.class));
+				startActivity(new Intent(getApplicationContext(),Temp.class));//AttemptQuizActivity.class));
 			}
 		});
     }

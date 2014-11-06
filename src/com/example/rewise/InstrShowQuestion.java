@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.Parse;
@@ -30,6 +31,7 @@ public class InstrShowQuestion extends Activity implements OnItemClickListener{
     public  InstrShowQuestion CustomListView = null;
     public  ArrayList<Question> CustomListViewValuesArr = new ArrayList<Question>();
     List<ParseObject> ob;
+    
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,19 @@ public class InstrShowQuestion extends Activity implements OnItemClickListener{
          
         adapter=new CustomAdapterQuestions( CustomListView, CustomListViewValuesArr,res );
         list.setAdapter( adapter );
+        
 		
 	}
+	
+	ProgressDialog pd;
+	 public void initPD() {
+			pd=new ProgressDialog(InstrShowQuestion.this);
+			pd.setTitle("Please Wait...");
+			pd.setMessage("Fetching Questions");
+			pd.setIndeterminate(true);
+			pd.setCancelable(false);
+		}
+	
 	public void setListData()
     {  
 		new RemoteDataTask().execute();
@@ -63,10 +76,12 @@ public class InstrShowQuestion extends Activity implements OnItemClickListener{
     }
     
 	 private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
+		 
 	        @Override
 	        protected void onPreExecute() {
-	        	
-	        	
+	        	super.onPreExecute();
+	        	initPD();
+	        	pd.show();
 	        }
 	 
 	        @Override
@@ -106,6 +121,7 @@ public class InstrShowQuestion extends Activity implements OnItemClickListener{
 	                CustomListViewValuesArr.add( sched );
 	            }
 	            adapter.notifyDataSetChanged();
+	            pd.dismiss();
 	            Log.e("as", "The End!");
 	            
 	        }

@@ -1,6 +1,7 @@
 package com.example.rewise;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.os.Handler;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import com.google.android.gms.R.string;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
 public class Question {
@@ -30,7 +32,9 @@ public class Question {
 			al=new ArrayList<Question>();
 			once=true;
 		}
+		this._id="";
 		this.title="";
+		this.category="";
 		this.options=new ArrayList<String>();
 		this.isSingle=true;
 		this.correct=new ArrayList<Integer>();
@@ -141,37 +145,62 @@ public class Question {
 		this.options.clear();
 	}
 	
-	public void uploadToDB()
+	public boolean uploadToDB()
 	{
+		
+//		if(this.isInDB)
+//			return true;
 		final ParseObject obj = new ParseObject("Questions");
 		obj.put("Question", this.title);
 		obj.put("isSingle", this.isSingle);
 		obj.put("Correct", this.correct);
 		obj.put("Options", this.options);
 		obj.put("Explanation", this.explanation);
-		obj.saveInBackground(new SaveCallback() {
-			
-			@Override
-			public void done(ParseException e) {
-				setObjectId(obj.getString("Question"), obj.getObjectId());
-			}
-		});
+		try{
+			Log.d("asd","started saving");
+			obj.save();
+			Log.d("asd","done saving");
+		}
+		catch(Exception e){
+			Log.d("asd","err saving");
+			return false;
+		}
 		this.isInDB=true;
+		this._id=obj.getObjectId();
+		return true;
 	}
 	
-	static private void setObjectId(final String title, final String objId)
+	public void ParseQuestion(ParseObject parseObject)
 	{
-		for(Question q: al)
-		{
-			if(title==q.title)
-				q._id=objId;
-		}
-		new Handler().postDelayed(new Runnable() {
-			
-			@Override
-			public void run() {
-				Log.d("asd", title+objId);
-			}
-		}, 200);
+		this._id=parseObject.getObjectId();
+		this.title=parseObject.getString("Question");
+		this.isSingle=parseObject.getBoolean("isSingle");
+		this.category=parseObject.getString("Category");
+		this.options=(ArrayList<String>) parseObject.get("Options");
+		this.correct=(ArrayList<Integer>) parseObject.get("Correct");
+		this.explanation=parseObject.getString("Explanation");
 	}
+	
+	public static List<Question> downloadQsFromDB(List<String> lIds)
+	{
+		List<Question> lQs=new ArrayList<Question>();
+		ParseQuery<ParseObject> queryGetQs = new ParseQuery<ParseObject>("Questions");
+		queryGetQs.whereContainedIn("objectId", lIds);
+		
+		ArrayList<ParseObject> gettingQsParse;
+		try {
+			gettingQsParse = (ArrayList<ParseObject>) queryGetQs.find();
+			for(ParseObject parseObject:gettingQsParse)
+			{
+				Question question=new Question();
+				question.ParseQuestion(parseObject);
+				lQs.add(question);
+			}
+			return lQs;
+		} catch (ParseException e) {
+		}
+		
+		return null;
+	}
+	
 }
