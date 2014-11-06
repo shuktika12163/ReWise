@@ -9,8 +9,8 @@ package com.example.rewise;
 
 public final class R {
     public static final class array {
-        public static final int courses=0x7f090001;
-        public static final int navdrawers_array=0x7f090000;
+        public static final int courses=0x7f0a0001;
+        public static final int navdrawers_array=0x7f0a0000;
     }
     public static final class attr {
         /** 
@@ -378,8 +378,8 @@ containing a value of this type.
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f080000;
-        public static final int activity_vertical_margin=0x7f080001;
+        public static final int activity_horizontal_margin=0x7f090000;
+        public static final int activity_vertical_margin=0x7f090001;
     }
     public static final class drawable {
         public static final int action_search=0x7f020000;
@@ -424,91 +424,91 @@ containing a value of this type.
         public static final int software=0x7f020027;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b004f;
-        public static final int action_websearch=0x7f0b0050;
-        public static final int book_now=0x7f0b000e;
-        public static final int btnOK=0x7f0b004b;
-        public static final int btnSubmit=0x7f0b003e;
-        public static final int btn_instr_login=0x7f0b0035;
-        public static final int btn_instr_signup=0x7f0b003c;
-        public static final int btn_login=0x7f0b002f;
-        public static final int btn_signup=0x7f0b0030;
-        public static final int btn_stu_login=0x7f0b0036;
-        public static final int btn_stu_signup=0x7f0b003b;
-        public static final int button1=0x7f0b0022;
-        public static final int button2=0x7f0b004c;
-        public static final int button3=0x7f0b004d;
-        public static final int button4=0x7f0b004e;
-        public static final int buyButton=0x7f0b000a;
-        public static final int buy_now=0x7f0b000f;
-        public static final int buy_with_google=0x7f0b0010;
-        public static final int checkBox1=0x7f0b001a;
-        public static final int checkBox2=0x7f0b001b;
-        public static final int checkBox3=0x7f0b001d;
-        public static final int checkBox4=0x7f0b001f;
-        public static final int classic=0x7f0b0011;
-        public static final int content_frame=0x7f0b0032;
-        public static final int coursecode=0x7f0b0024;
-        public static final int coursecodetitle=0x7f0b0025;
-        public static final int create=0x7f0b0023;
-        public static final int datebutton=0x7f0b0027;
-        public static final int drawer_layout=0x7f0b0031;
-        public static final int editText1=0x7f0b0017;
-        public static final int editText2=0x7f0b0021;
-        public static final int et_password=0x7f0b002d;
-        public static final int et_username=0x7f0b002e;
-        public static final int firstLine=0x7f0b0046;
-        public static final int gotoQuiz=0x7f0b0037;
-        public static final int grayscale=0x7f0b0012;
-        public static final int holo_dark=0x7f0b0005;
-        public static final int holo_light=0x7f0b0006;
-        public static final int hybrid=0x7f0b0000;
-        public static final int image=0x7f0b0044;
-        public static final int imageView1=0x7f0b0045;
-        public static final int itemPlus=0x7f0b0051;
-        public static final int left_drawer=0x7f0b0033;
-        public static final int listview=0x7f0b0039;
-        public static final int listview2=0x7f0b0038;
-        public static final int lvOptions=0x7f0b0042;
-        public static final int match_parent=0x7f0b000c;
-        public static final int monochrome=0x7f0b0013;
-        public static final int nameofquiz=0x7f0b002a;
-        public static final int none=0x7f0b0001;
-        public static final int normal=0x7f0b0002;
-        public static final int pager=0x7f0b0040;
-        public static final int production=0x7f0b0007;
-        public static final int sandbox=0x7f0b0008;
-        public static final int satellite=0x7f0b0003;
-        public static final int secondLine=0x7f0b0047;
-        public static final int selectionDetails=0x7f0b000b;
-        public static final int setdate=0x7f0b0028;
-        public static final int settime=0x7f0b0029;
-        public static final int spinner1=0x7f0b0014;
-        public static final int strict_sandbox=0x7f0b0009;
-        public static final int terrain=0x7f0b0004;
-        public static final int textView1=0x7f0b0015;
-        public static final int textView2=0x7f0b0016;
-        public static final int textView3=0x7f0b0018;
-        public static final int textView4=0x7f0b0019;
-        public static final int textView5=0x7f0b001c;
-        public static final int textView6=0x7f0b001e;
-        public static final int textView7=0x7f0b0020;
-        public static final int timebutton=0x7f0b0026;
-        public static final int tvAbove=0x7f0b0048;
-        public static final int tvAttempted=0x7f0b003d;
-        public static final int tvBelow=0x7f0b004a;
-        public static final int tvExplanation=0x7f0b0043;
-        public static final int tvQuestion=0x7f0b0041;
-        public static final int tvSlash=0x7f0b0049;
-        public static final int tvTime=0x7f0b003f;
-        public static final int tv_details=0x7f0b003a;
-        public static final int tv_login=0x7f0b0034;
-        public static final int tv_password=0x7f0b002b;
-        public static final int tv_username=0x7f0b002c;
-        public static final int wrap_content=0x7f0b000d;
+        public static final int TextView01=0x7f07001a;
+        public static final int action_settings=0x7f07004f;
+        public static final int action_websearch=0x7f070050;
+        public static final int addoption=0x7f07001f;
+        public static final int book_now=0x7f070010;
+        public static final int btnOK=0x7f070049;
+        public static final int btnSubmit=0x7f07003c;
+        public static final int btn_instr_login=0x7f070033;
+        public static final int btn_instr_signup=0x7f07003a;
+        public static final int btn_login=0x7f07002d;
+        public static final int btn_signup=0x7f07002e;
+        public static final int btn_stu_login=0x7f070034;
+        public static final int btn_stu_signup=0x7f070039;
+        public static final int button1=0x7f07004b;
+        public static final int button2=0x7f07004c;
+        public static final int button3=0x7f07004d;
+        public static final int button4=0x7f07004e;
+        public static final int buyButton=0x7f07000a;
+        public static final int buy_now=0x7f07000f;
+        public static final int buy_with_google=0x7f07000e;
+        public static final int category=0x7f070015;
+        public static final int categorytitle=0x7f070014;
+        public static final int checkBox1=0x7f07004a;
+        public static final int classic=0x7f070011;
+        public static final int content_frame=0x7f070030;
+        public static final int coursecode=0x7f070020;
+        public static final int coursecodetitle=0x7f070017;
+        public static final int create=0x7f070016;
+        public static final int date=0x7f070023;
+        public static final int datebutton=0x7f070025;
+        public static final int drawer_layout=0x7f07002f;
+        public static final int duration=0x7f070026;
+        public static final int durationseekBar=0x7f070028;
+        public static final int et_password=0x7f07002b;
+        public static final int et_username=0x7f07002c;
+        public static final int firstLine=0x7f070044;
+        public static final int gotoQuiz=0x7f070035;
+        public static final int grayscale=0x7f070012;
+        public static final int holo_dark=0x7f070005;
+        public static final int holo_light=0x7f070006;
+        public static final int hybrid=0x7f070004;
+        public static final int image=0x7f070042;
+        public static final int imageView1=0x7f070043;
+        public static final int itemPlus=0x7f070051;
+        public static final int left_drawer=0x7f070031;
+        public static final int listview=0x7f070037;
+        public static final int listview2=0x7f070036;
+        public static final int lvCreateQ=0x7f07001e;
+        public static final int lvOptions=0x7f070040;
+        public static final int match_parent=0x7f07000c;
+        public static final int monochrome=0x7f070013;
+        public static final int nameofquiz=0x7f070021;
+        public static final int none=0x7f070000;
+        public static final int normal=0x7f070001;
+        public static final int pager=0x7f07003e;
+        public static final int production=0x7f070007;
+        public static final int questionstatement=0x7f07001b;
+        public static final int questionsubtitle=0x7f07001d;
+        public static final int questiontitle=0x7f07001c;
+        public static final int sandbox=0x7f070008;
+        public static final int satellite=0x7f070002;
+        public static final int secondLine=0x7f070045;
+        public static final int selectionDetails=0x7f07000b;
+        public static final int strict_sandbox=0x7f070009;
+        public static final int terrain=0x7f070003;
+        public static final int textView1=0x7f070027;
+        public static final int textView4=0x7f070018;
+        public static final int time=0x7f070022;
+        public static final int timebutton=0x7f070024;
+        public static final int topic=0x7f070019;
+        public static final int tvAbove=0x7f070046;
+        public static final int tvAttempted=0x7f07003b;
+        public static final int tvBelow=0x7f070048;
+        public static final int tvExplanation=0x7f070041;
+        public static final int tvQuestion=0x7f07003f;
+        public static final int tvSlash=0x7f070047;
+        public static final int tvTime=0x7f07003d;
+        public static final int tv_details=0x7f070038;
+        public static final int tv_login=0x7f070032;
+        public static final int tv_password=0x7f070029;
+        public static final int tv_username=0x7f07002a;
+        public static final int wrap_content=0x7f07000d;
     }
     public static final class integer {
-        public static final int google_play_services_version=0x7f070000;
+        public static final int google_play_services_version=0x7f080000;
     }
     public static final class layout {
         public static final int activity_create_question=0x7f030000;
@@ -533,12 +533,12 @@ containing a value of this type.
         public static final int temp=0x7f030013;
     }
     public static final class menu {
-        public static final int instr_login=0x7f0a0000;
-        public static final int instr_main=0x7f0a0001;
-        public static final int main_login=0x7f0a0002;
-        public static final int menu=0x7f0a0003;
-        public static final int signup=0x7f0a0004;
-        public static final int stu_login=0x7f0a0005;
+        public static final int instr_login=0x7f0b0000;
+        public static final int instr_main=0x7f0b0001;
+        public static final int main_login=0x7f0b0002;
+        public static final int menu=0x7f0b0003;
+        public static final int signup=0x7f0b0004;
+        public static final int stu_login=0x7f0b0005;
     }
     public static final class string {
         public static final int accept=0x7f050002;
