@@ -6,5 +6,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Sarthak/Desktop/ReWise/Parse-1.5.1/Parse-1.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Sarthak/Desktop/ReWise/ReWise/libs/mpandroidchartlibrary-1-7-4.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Sarthak/Desktop/ReWise/FloatingActionButton-Compat-master/bin/floatingactionbutton-compat-master.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

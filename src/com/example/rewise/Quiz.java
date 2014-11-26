@@ -17,11 +17,9 @@ import com.parse.SaveCallback;
 
 public class Quiz {
 	
-	String _id;
+	private String _id;
 	String code;
 	String name;
-	String category;
-	String courseCode;
 	Date starttime;
 	Date endtime;
 	ArrayList<Question> questions;
@@ -41,8 +39,6 @@ public class Quiz {
 		}
 		this.code="";
 		this.name="";
-		this.category="";
-		this.courseCode="";
 		this.starttime=Calendar.getInstance().getTime();
 		this.endtime=Calendar.getInstance().getTime();
 		this.isTimed=false;
@@ -71,26 +67,8 @@ public class Quiz {
 		return starttime;
 	}
 	
-	public void setCategory(String Category)
-	{
-		this.category=Category;
-	}
-	
-	public String getCourseCode() {
-		return courseCode;
-	}
-
-	public void setCourseCode(String courseCode) {
-		this.courseCode = courseCode;
-	}
-	
 	public void setStarttime(Date starttime) {
 		this.starttime = starttime;
-	}
-	
-	public String getCategory()
-	{
-		return this.category;
 	}
 	
 	
@@ -168,12 +146,10 @@ public class Quiz {
             	Quiz quiz = new Quiz();
                 quiz.setCode(poQuiz.getString("Code"));
                 quiz.setName(poQuiz.getString("Name"));
-                quiz.setCategory(poQuiz.getString("Category"));
-                quiz.setCourseCode(poQuiz.getString("CourseCode"));
                 quiz.setTimed(poQuiz.getBoolean("isTimed"));
                 quiz.setStarttime(poQuiz.getDate("StartTime"));
                 quiz.setEndtime(poQuiz.getDate("EndTime"));
-                quiz._id=poQuiz.getObjectId();
+                quiz.set_id(poQuiz.getObjectId());
                 quiz.isInDB=true;
                 lQuizzes.add(quiz);
             }
@@ -193,7 +169,6 @@ public class Quiz {
 		final ParseObject obj = new ParseObject("Quizzes");
 		obj.put("Code", this.code);
 		obj.put("Name", this.name);
-		obj.put("Category", this.category);
 		obj.put("StartTime", this.starttime);
 		obj.put("EndTime", this.endtime);
 		obj.put("isTimed", this.isTimed);
@@ -207,7 +182,7 @@ public class Quiz {
 			return false;
 		}
 		this.isInDB=true;
-		this._id=obj.getObjectId();
+		this.set_id(obj.getObjectId());
 		return true;
 	}
 	
@@ -217,8 +192,8 @@ public class Quiz {
 		for(Question qq:this.questions)
 		{
 			ParseObject obj = new ParseObject("MapQuizQuestions");
-			obj.put("QuizID", this._id);
-			obj.put("QuestionID", qq._id);
+			obj.put("QuizID", this.get_id());
+			obj.put("QuestionID", qq.get_id());
 			alPo.add(obj);
 			Log.d("asd","u");
 		}
@@ -237,7 +212,7 @@ public class Quiz {
 	{
 		ArrayList<String> alQIDs=new ArrayList<String>();
 		ParseQuery<ParseObject> queryQuestionId = new ParseQuery<ParseObject>("MapQuizQuestions");
-		queryQuestionId.whereEqualTo("QuizID", this._id);
+		queryQuestionId.whereEqualTo("QuizID", this.get_id());
 		queryQuestionId.addAscendingOrder("createdAt");
 		try {
 			ArrayList<ParseObject> alMapQuizQs=(ArrayList<ParseObject>) queryQuestionId.find();
@@ -251,6 +226,14 @@ public class Quiz {
 		}
 		
 		return true;
+	}
+
+	public String get_id() {
+		return _id;
+	}
+
+	public void set_id(String _id) {
+		this._id = _id;
 	}
 	
 }

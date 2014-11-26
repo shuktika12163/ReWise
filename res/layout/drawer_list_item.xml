@@ -13,15 +13,27 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/text1"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+<ImageView 
+    android:id="@+id/img1"
+    android:layout_width="match_parent"
+    android:layout_weight="5"
+    android:layout_height="match_parent"
+    android:src="@drawable/ic_launcher"/>
+<TextView
+    android:id="@+id/text1"
+    android:layout_weight="1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
     android:gravity="center_vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:textColor="#fff"
+    android:textColor="#ffffff"
     android:background="?android:attr/activatedBackgroundIndicator"
     android:minHeight="?android:attr/listPreferredItemHeightSmall"/>
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content" >
+	<ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_weight="5"
+        android:layout_height="40dp"
+        android:src="@drawable/right" />
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Loading..."
+        android:textSize="30px" >
+    </TextView>
+
+    <CheckBox
+        android:id="@+id/check"
+        android:layout_width="match_parent"
+        android:layout_weight="5"
+        android:layout_height="wrap_content">
+    </CheckBox>
+
+</LinearLayout> 

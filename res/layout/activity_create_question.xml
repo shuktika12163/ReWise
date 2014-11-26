@@ -26,14 +26,14 @@
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:gravity="left"
-			        android:text="Category"
+			        android:text="Course Name"
 			        android:layout_gravity="left"
 			        android:textSize="20sp"
 			        android:textColor="#FFFFFF"
 			        android:textStyle="bold|italic" />
 			
 			    <Spinner
-			        android:id="@+id/category"
+			        android:id="@+id/courses"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:layout_alignRight="@+id/create"
@@ -51,13 +51,13 @@
 			        android:id="@+id/textView4"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
-			        android:text="Question Topic"
+			        android:text="Question Statement"
 			        android:textSize="20sp"
 			        android:textColor="#FFFFFF"
 			        android:textStyle="bold|italic" />
 			
 			    <EditText
-			        android:id="@+id/topic"
+			        android:id="@+id/statement"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:ems="10" />
@@ -72,13 +72,13 @@
 			            android:id="@+id/TextView01"
 			            android:layout_width="match_parent"
 			            android:layout_height="wrap_content"
-			            android:text="Question Statement"
+			            android:text="Answer Explanation"
 			            android:textColor="#FFFFFF"
 			            android:textSize="20sp"
 			            android:textStyle="bold|italic" />
 			
 			    <EditText
-			        android:id="@+id/questionstatement"
+			        android:id="@+id/explanation"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:ems="10" />

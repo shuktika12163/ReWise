@@ -3,19 +3,15 @@ package com.example.rewise;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.gms.R.string;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.SaveCallback;
 
 public class Question {
-	String _id;
-	String title;
+	private String _id;
+	String question;
 	String category;
 	ArrayList<String> options;
 	boolean isSingle;
@@ -32,14 +28,14 @@ public class Question {
 			al=new ArrayList<Question>();
 			once=true;
 		}
-		this._id="";
-		this.title="";
+		this.set_id("");
+		this.question="";
 		this.category="";
 		this.options=new ArrayList<String>();
 		this.isSingle=true;
 		this.correct=new ArrayList<Integer>();
 		this.isInDB=false;
-		this.explanation="";
+		this.setExplanation("");
 		al.add(this);
 	}
 	
@@ -49,14 +45,14 @@ public class Question {
 		this.isSingle=isSingle;
 	}
 	
-	public String getTitle()
+	public String getQuestion()
 	{
-		return title;
+		return question;
 	}
 	
-	public void setTitle(String title)
+	public void setQuestion(String title)
 	{
-		this.title = title;
+		this.question = title;
 	}
 	
 	public void setCategory(String category)
@@ -151,11 +147,11 @@ public class Question {
 //		if(this.isInDB)
 //			return true;
 		final ParseObject obj = new ParseObject("Questions");
-		obj.put("Question", this.title);
+		obj.put("Question", this.question);
 		obj.put("isSingle", this.isSingle);
 		obj.put("Correct", this.correct);
 		obj.put("Options", this.options);
-		obj.put("Explanation", this.explanation);
+		obj.put("Explanation", this.getExplanation());
 		try{
 			Log.d("asd","started saving");
 			obj.save();
@@ -166,19 +162,19 @@ public class Question {
 			return false;
 		}
 		this.isInDB=true;
-		this._id=obj.getObjectId();
+		this.set_id(obj.getObjectId());
 		return true;
 	}
 	
 	public void ParseQuestion(ParseObject parseObject)
 	{
-		this._id=parseObject.getObjectId();
-		this.title=parseObject.getString("Question");
+		this.set_id(parseObject.getObjectId());
+		this.question=parseObject.getString("Question");
 		this.isSingle=parseObject.getBoolean("isSingle");
 		this.category=parseObject.getString("Category");
 		this.options=(ArrayList<String>) parseObject.get("Options");
 		this.correct=(ArrayList<Integer>) parseObject.get("Correct");
-		this.explanation=parseObject.getString("Explanation");
+		this.setExplanation(parseObject.getString("Explanation"));
 	}
 	
 	public static List<Question> downloadQsFromDB(List<String> lIds)
@@ -201,6 +197,22 @@ public class Question {
 		}
 		
 		return null;
+	}
+
+	public String get_id() {
+		return _id;
+	}
+
+	public void set_id(String _id) {
+		this._id = _id;
+	}
+
+	public String getExplanation() {
+		return explanation;
+	}
+
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
 	}
 	
 }

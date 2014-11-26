@@ -1,0 +1,145 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+    
+<LinearLayout 
+    android:id="@+id/mainback"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/defaultheader"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+         >
+
+        <TextView
+            android:id="@+id/firstLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="loading..."
+            android:textStyle="bold|italic"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/secondLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="loading..."
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+			<LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:gravity="center"
+		        
+	         	>
+	         	<LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_weight="1"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical"
+			        android:layout_gravity="center"
+			        android:gravity="center"
+			         >
+			         <TextView
+			            android:id="@+id/attendence_header"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:textColor="#FFFFFF"
+			            android:gravity="center"
+			            android:textAlignment="center"
+			            android:text="Attendence"
+			            android:textStyle="bold|italic"
+			            android:textAppearance="?android:attr/textAppearanceSmall" />
+			
+			        <TextView
+			            android:id="@+id/attendence"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:textAlignment="center"
+			            android:gravity="center"
+			            android:textStyle="bold|italic"
+			            android:text="loading..."
+			            android:textAppearance="?android:attr/textAppearanceLarge" />
+			    </LinearLayout>
+			    <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical"
+			        android:layout_weight="1"
+			        android:layout_gravity="center"
+			        android:gravity="center"
+			         >
+        			<TextView
+			            android:id="@+id/average_header"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:textColor="#FFFFFF"
+			            android:textAlignment="center"
+			            android:text="Average Score"
+			            android:textStyle="bold|italic"
+			            android:gravity="center"
+			            android:textAppearance="?android:attr/textAppearanceSmall" />
+			
+			        <TextView
+			            android:id="@+id/average"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:textAlignment="center"
+			            android:text="loading..."
+			            android:gravity="center"
+			            android:textStyle="bold|italic"
+			            android:textAppearance="?android:attr/textAppearanceLarge" />			        
+			    </LinearLayout>
+			    <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical"
+			        android:layout_weight="1"
+			        android:layout_gravity="center"
+			        android:gravity="center"
+			         >
+         			<TextView
+			            android:id="@+id/highest_header"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:textColor="#FFFFFF"
+			            android:gravity="center"
+			            android:textAlignment="center"
+			            android:text="Highest Score"
+			            android:textStyle="bold|italic"
+			            android:textAppearance="?android:attr/textAppearanceSmall" />
+			
+			        <TextView
+			            android:id="@+id/highest"
+			            android:layout_width="match_parent"
+			            android:textAlignment="center"
+			            android:gravity="center"
+			            android:layout_height="wrap_content"
+			            android:text="loading..."
+			            android:textStyle="bold|italic"
+			            android:textAppearance="?android:attr/textAppearanceLarge" />
+			    </LinearLayout>     
+         	</LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+<ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        
+        android:src="@drawable/right" />
+</FrameLayout>
