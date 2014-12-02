@@ -1,11 +1,7 @@
 package com.example.instuctor;
 
 import java.util.ArrayList;
-
-import com.example.rewise.R;
-import com.example.rewise.Utility;
-import com.example.rewise.R.id;
-import com.example.rewise.R.layout;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,18 +9,21 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-public class InstrCreateQuestionScreen extends Activity implements OnItemLongClickListener{
+import com.example.rewise.Question;
+import com.example.rewise.R;
+import com.example.rewise.Utility;
+
+public class InstrCreateQuestionScreen extends Activity implements OnItemLongClickListener, OnItemClickListener{
 	
+	String[] str= {"CSE400","ECO302","ECE222","CSE121","CSE200","CSE535"};
 	
 	private void changeoption(final int o){
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -59,11 +58,14 @@ public class InstrCreateQuestionScreen extends Activity implements OnItemLongCli
 	private ListView lv;
 	ArrayList<String> alOptions;
 	ArrayAdapter<String> adapter;
+	ArrayList<Integer> alCorrect;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_question);
+		alCorrect=new ArrayList<Integer>();
 		coursename=(Spinner)findViewById(R.id.courses);
+		coursename.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, str));
 		statement=(EditText)findViewById(R.id.statement);
 		explanation=(EditText)findViewById(R.id.explanation);
 		alOptions=new ArrayList<String>();
@@ -72,6 +74,7 @@ public class InstrCreateQuestionScreen extends Activity implements OnItemLongCli
 		lv.setAdapter(adapter);
 		Utility.setListViewHeightBasedOnChildren(lv);  
 		lv.setOnItemLongClickListener(this);
+		lv.setOnItemClickListener(this);
 		
 	}
 		
@@ -90,7 +93,33 @@ public class InstrCreateQuestionScreen extends Activity implements OnItemLongCli
 		return false;
 	}
 	
+	public void onCreateQuestion(View v)
+	{
+		Question q=new Question(false);
+		q.setCategory((String) coursename.getSelectedItem());
+		q.setExplanation(explanation.toString());
+		q.setOptions(alOptions);
+		q.setQuestion(statement.toString());
+		q.setCorrectAnswer(alCorrect);
+		q.uploadToDB();
+		finish();
+	}
 
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		if(alCorrect.contains(position))
+		{
+			ArrayList<Integer> al=new ArrayList<Integer>(); al.add(position);
+			alCorrect.removeAll(al);
+			lv.setItemChecked(position, false);
+		}
+		else
+		{
+			alCorrect.add(position);
+			lv.setItemChecked(position, true);
+		}
+	}
 
 	
 }

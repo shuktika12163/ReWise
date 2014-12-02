@@ -1,13 +1,16 @@
 package com.example.student;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -18,47 +21,80 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.instuctor.InstrCreateQuizScreen;
-import com.example.instuctor.InstrHomePageFragment;
-import com.example.instuctor.InstrQuestionBankFragment;
-import com.example.instuctor.InstrShowQuiz;
+import com.example.rewise.Course;
 import com.example.rewise.CourseManagementFragment;
 import com.example.rewise.NavBarAdapter;
 import com.example.rewise.R;
-import com.example.rewise.R.array;
-import com.example.rewise.R.color;
-import com.example.rewise.R.drawable;
-import com.example.rewise.R.id;
-import com.example.rewise.R.layout;
-import com.example.rewise.R.string;
+import com.example.rewise.User;
+import com.example.rewise.globalVariables;
+import com.example.student.StuCourseStatsScreen;
+import com.example.student.StuQuizStatsScreen;
 import com.example.tobedeleted.Constants;
+import com.parse.Parse;
 
 public class StuMainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-
+    /*
+     * Constants file is being used only as a substitute for parse
+     * Manan remove both of them when integrating with Parse
+     */
+    private SharedPreferences sharedPreferences;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mnavdrawerTitles;
-
+    public static List<Course> courseobjects;
+    public static User user;
+    public static boolean once=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instr_main);
+        Parse.initialize(this, "d6b9vOQMQh333RxqJwDJzUtTuig6uNy15Lh8SzFf", "6MeNeaoCQsFOEjjFRZLbc8ST1TO3BNMb8hlUGTRK");
         Intent view = getIntent();
 		String email_id = view.getStringExtra("email_id");
-		Toast.makeText(StuMainActivity.this, "mEmail is "+ email_id, Toast.LENGTH_SHORT).show();
+		user=new User(email_id,false);
+		globalVariables.designation=false;
+		courseobjects=Course.downloadAllCoursesFromDB();
+		for(Course each: courseobjects)
+		{
+			each.setSelected(false);
+			for(String each2 : user.getAlCourses())
+			{
+				if(each.getCode().equals(each2))
+					each.setSelected(true);
+			}
+		}
+		/*courseobjects.get(0).setSelected(true);*/
+		for(Course each: courseobjects)
+		{
+			each.downloadQuizzes();
+		}
+		once=true;
+		globalVariables.UID=email_id;
+		List<String> userCourses=new ArrayList<String>();
+		for(Course course:courseobjects)
+			if(course.isSelected())
+				userCourses.add(course.getCode());
+		StuMainActivity.user.modifyCourses(userCourses);
+		Toast.makeText(StuMainActivity.this, "Email is "+ email_id, Toast.LENGTH_SHORT).show();
+		/*
+		 * Use Email to get Courses from Parse and put it into courses
+		 */
         mTitle = mDrawerTitle = getTitle();
-        mnavdrawerTitles = getResources().getStringArray(R.array.navdrawers_array_stu);
+        mnavdrawerTitles = getResources().getStringArray(R.array.navdrawers_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
+        sharedPreferences=getSharedPreferences("myprefs", MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("I", true)){
+	        Constants.set();
+	        sharedPreferences.edit().putBoolean("I", false);
+        }
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
@@ -126,28 +162,31 @@ public class StuMainActivity extends Activity {
     }
     
     public void createQuiz(View v){
-    	startActivity(new Intent(getApplicationContext(),InstrCreateQuizScreen.class));
+    	//startActivity(new Intent(getApplicationContext(),InstrCreateQuizScreen.class));
     }
+    
+    public void createQuestion(View v){
+    	//startActivity(new Intent(getApplicationContext(),InstrCreateQuestionScreen.class));
+    }
+    
     private void selectItem(int position) {
     	Fragment fragment = new navdrawerFragment();
     	if (position==0){
-    		fragment=new InstrHomePageFragment();
+    		fragment=new StuHomePageFragment();
     	}
     	if(position==1){
-    		startActivity(new Intent(getApplicationContext(),InstrCreateQuizScreen.class));
+    		fragment= new StudentProfileFragment();
     	}
     	else if(position==2){
-    		startActivity(new Intent(getApplicationContext(),InstrShowQuiz.class));
+    		fragment=new StuCourseStatsOverviewFragment();
     	}
     	else if(position==3){
+    		fragment = new StuQuestionBankFragment();
     	}
     	else if(position==4){
-    		startActivity(new Intent(getApplicationContext(),InstrQuestionBankFragment.class));
+    		fragment=new CourseManagementFragment();
     	}
     	else if(position==5){
-    		startActivity(new Intent(getApplicationContext(),CourseManagementFragment.class));
-    	}
-    	else if(position==6){
     		finish();
     	}
         // update the main content by replacing fragments
@@ -214,4 +253,5 @@ public class StuMainActivity extends Activity {
             return rootView;
         }
     }
+    
 }

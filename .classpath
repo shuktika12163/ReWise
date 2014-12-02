@@ -5,8 +5,7 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Sarthak/Desktop/ReWise/Parse-1.5.1/Parse-1.5.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Sarthak/Desktop/ReWise/ReWise/libs/mpandroidchartlibrary-1-7-4.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Sarthak/Desktop/ReWise/FloatingActionButton-Compat-master/bin/floatingactionbutton-compat-master.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/adt-bundle-windows-x86_64-20140702/Parse-1.5.1/Parse-1.5.1.jar"/>
+	<classpathentry kind="lib" path="D:/adt-bundle-windows-x86_64-20140702/mpandroidchartlibrary-1-7-4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

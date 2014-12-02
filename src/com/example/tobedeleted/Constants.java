@@ -24,6 +24,8 @@ public final class Constants {
 		CtoU.clear();
 		Statistics.clear();
 		//Hard Code Quiz
+		
+		//MG done
 		Quiz q=new Quiz();
 		q.setCode("Q1");
 		q.setEndtime(new Date());
@@ -32,6 +34,7 @@ public final class Constants {
 		QuizObjects.add(q);
 		
 		//Hard Code Course
+		//MG done
 		Course c=new Course();
     	c.setName("Mobile Computing");
     	c.setCode("CSE535");
@@ -77,6 +80,7 @@ public final class Constants {
     	CourseObjects.add(c);
     	
     	//Hard Code Mapping CtoU
+    	//MG done
     	MapCourseToUser m1=new MapCourseToUser();
     	m1.CID="CSE535";
     	m1.UID="sarthak166@gmail.com";
@@ -92,6 +96,7 @@ public final class Constants {
     	CtoU.add(m1);
     	
     	//Hard Code Mapping CtoQ
+    	//MG done
     	MapQuizToCourse q1=new MapQuizToCourse();
     	q1.setCID("CSE535");
     	q1.setZID("Q1");
@@ -99,159 +104,148 @@ public final class Constants {
     	Log.e("I", CtoQ.get(0).getCID());
     	
     	//Hard Code Statistics
+    	//MG done
     	MockStatModel m=new MockStatModel();
-    	m.UID="sarthak166@gmail.com";
-    	m.QID="1";
+    	m.setUID("sarthak166@gmail.com");
+    	m.setQID("1");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,2,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,2,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	
-    	m.UID="sarthak166@gmail.com";
-    	m.QID="2";
+    	m.setUID("sarthak166@gmail.com");
+    	m.setQID("2");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,2,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,2,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="sarthak166@gmail.com";
-    	m.QID="3";
+    	m.setUID("sarthak166@gmail.com");
+    	m.setQID("3");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,2,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,2,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="sarthak166@gmail.com";
-    	m.QID="4";
+    	m.setUID("sarthak166@gmail.com");
+    	m.setQID("4");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="shreya@gmail.com";
-    	m.QID="1";
+    	m.setUID("shreya@gmail.com");
+    	m.setQID("1");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="shreya@gmail.com";
-    	m.QID="2";
+    	m.setUID("shreya@gmail.com");
+    	m.setQID("2");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="shreya@gmail.com";
-    	m.QID="3";
+    	m.setUID("shreya@gmail.com");
+    	m.setQID("3");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="shreya@gmail.com";
-    	m.QID="4";
+    	m.setUID("shreya@gmail.com");
+    	m.setQID("4");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,2,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,2,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="manang@gmail.com";
-    	m.QID="1";
+    	m.setUID("manang@gmail.com");
+    	m.setQID("1");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="manang@gmail.com";;
-    	m.QID="2";
+    	m.setUID("manang@gmail.com");;
+    	m.setQID("2");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="manang@gmail.com";
-    	m.QID="3";
+    	m.setUID("manang@gmail.com");
+    	m.setQID("3");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,2,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,2,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
     	
-    	m.UID="manang@gmail.com";
-    	m.QID="4";
+    	m.setUID("manang@gmail.com");
+    	m.setQID("4");
     	m.setQuizName("Introduction to Android");
     	m.setCID("CSE535");
-    	m.CourseName="Mobile Computing";
+    	m.setCourseName("Mobile Computing");
     	m.setZID("Q1");
-    	m.correct=new int[]{1,2,3};
-    	m.response=new int[]{1,2,3};
-    	m.Designation=false;
-    	m.setIcon(R.drawable.mc);
+    	m.setCorrect(new int[]{1,2,3});
+    	m.setResponse(new int[]{1,2,3});
+    	m.setDesignation(false);
     	Statistics.add(m);
     	m=new MockStatModel();
 	}

@@ -19,7 +19,7 @@ public class InstrCourseStats{
 		//Connect to Parse and Receive Data from Statistics Table
 		//Initiate Statistics Calculation
 		this.code=cid;
-		for(Course i:Constants.CourseObjects){
+		for(Course i:InstrMainActivity.courseobjects){
 			if(i.getCode()==code){
 				icon=i.getBack();
 				name=i.getName();

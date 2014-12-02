@@ -1,8 +1,9 @@
 package com.example.instuctor;
 import java.util.ArrayList;
+import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -17,21 +18,21 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 
 import com.example.rewise.Course;
-import com.example.rewise.CourseQuizAdapter;
-import com.example.rewise.Quiz;
 import com.example.rewise.R;
 import com.example.tobedeleted.Constants;
+import com.parse.Parse;
 
 public class InstrHomePageFragment extends Fragment implements OnItemClickListener{
 	
 	ExpandableListView lv;
-	CourseQuizAdapter adapter;
+	InstrCourseQuizAdapter adapter;
 	ImageView fab;
 		
 	private ArrayList<Course> parents;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Parse.initialize(getActivity(), "d6b9vOQMQh333RxqJwDJzUtTuig6uNy15Lh8SzFf", "6MeNeaoCQsFOEjjFRZLbc8ST1TO3BNMb8hlUGTRK");
 		super.onCreate(savedInstanceState);
 		
 	}
@@ -54,8 +55,8 @@ public class InstrHomePageFragment extends Fragment implements OnItemClickListen
         // Creating ArrayList of type parent class to store parent class objects
         final ArrayList<Course> list = new ArrayList<Course>();
         InstrMainActivity im= (InstrMainActivity)getActivity();
-        
-        for (Course i: Constants.CourseObjects)
+        List<Course> CourseObjects=InstrMainActivity.courseobjects;//Constants.CourseObjects
+        for (Course i: CourseObjects)
         {
             if (i.isSelected()==true){
             	list.add(i);
@@ -73,7 +74,7 @@ public class InstrHomePageFragment extends Fragment implements OnItemClickListen
          
         if (lv.getExpandableListAdapter() == null)
         {
-            adapter = new CourseQuizAdapter(parents,getActivity().getApplicationContext());
+            adapter = new InstrCourseQuizAdapter(parents,getActivity().getApplicationContext());
             lv.setAdapter(adapter);
         }
         else
@@ -123,7 +124,22 @@ public class InstrHomePageFragment extends Fragment implements OnItemClickListen
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		// TODO Auto-generated method stub
-		
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if(InstrMainActivity.once)
+		{
+			InstrMainActivity.once=false;
+			return;
+		}
+		for(Course each: InstrMainActivity.courseobjects)
+		{
+			each.downloadQuizzes();
+		}
+		adapter.notifyDataSetChanged();
+	}
+	
+	
 }

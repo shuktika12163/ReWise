@@ -2,7 +2,10 @@ package com.example.instuctor;
 
 import java.util.ArrayList;
 
+import android.R;
+
 import com.example.rewise.Course;
+import com.example.rewise.globalVariables;
 import com.example.tobedeleted.Constants;
 import com.example.tobedeleted.MapQuizToCourse;
 import com.example.tobedeleted.MockStatModel;
@@ -21,11 +24,12 @@ public class InstrQuizStats {
 		//Initiate Statistics Calculation
 		this.code=zid;
 		
-		for(MockStatModel i:Constants.Statistics){
+		ArrayList<MockStatModel> Statistics=MockStatModel.downloadAllStats();//Constants.Statistics
+		for(MockStatModel i:Statistics){
 			System.out.println(i.getCID());
 			System.out.println(i.getZID());
 			if(i.getCID()==cid && i.getZID()==zid){
-				icon=i.getIcon();
+				icon=globalVariables.icon; //i.getIcon();
 				name=i.getQuizName();
 			}
 		}

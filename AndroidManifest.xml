@@ -47,6 +47,11 @@
             android:name="com.example.instuctor.InstrShowQuiz"
             android:label="Your Quizzes" >
         </activity>
+        
+        <activity
+            android:name="com.example.instuctor.InstrSelectQuestionScreen"
+            android:label="Selects Questions" >
+        </activity>
 
         <activity
           android:name="com.example.statistics.InstrCourseStats"
@@ -87,6 +92,52 @@
             android:name="com.example.instuctor.InstrCreateQuizScreen"
             android:label="Quiz Creation" >
         </activity>
+        
+        
+        
+        
+        
+        
+                <activity
+            android:name="com.example.instuctor.StuShowQuiz"
+            android:label="Your Quizzes" >
+        </activity>
+        
+        <activity
+            android:name="com.example.instuctor.StuSelectQuestionScreen"
+            android:label="Selects Questions" >
+        </activity>
+
+        <activity
+          android:name="com.example.statistics.StuCourseStats"
+            android:label="Course Statistics" >
+        </activity>
+        
+        <activity
+          android:name="com.example.statistics.StuQuizStats"
+            android:label="Quiz Statistics" >
+        </activity>
+        
+        <activity
+          android:name="com.example.instuctor.StuCourseStatsScreen"
+            android:label="Course Statistics" >
+        </activity>
+        
+        <activity
+          android:name="com.example.instuctor.StuQuizStatsScreen"
+            android:label="Quiz Statistics" >
+        </activity>
+        
+        <activity
+            android:name="com.example.instuctor.StuQuizStatsOverviewScreen"
+            android:label="Question Addition" >
+        </activity>
+        
+        
+        
+        
+        
+        
 		
 
         <activity
@@ -99,13 +150,13 @@
         </activity>
         
         <activity
-          android:name=".AttemptQuizActivity"
+          android:name="com.example.livequiz.AttemptQuizActivity"
             android:screenOrientation="portrait"
             android:label="CanU?" >
         </activity>
         
         <activity
-            android:name=".AttemptScoreActivity"
+            android:name="com.example.livequiz.AttemptScoreActivity"
             android:label="Your Score" >
         </activity>
         

@@ -1,27 +1,23 @@
 package com.example.instuctor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.rewise.Course;
 import com.example.rewise.R;
 import com.example.rewise.globalVariables;
 import com.example.tobedeleted.Constants;
-import com.example.tobedeleted.MapQuizToCourse;
 
 /*
  * Show a List view of all the Courses with some overview Statistics
@@ -49,8 +45,9 @@ public class InstrCourseStatsOverviewFragment extends Fragment implements OnItem
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
+		List<Course> CourseObjects=InstrMainActivity.courseobjects;//Constants.CourseObjects;
 		ics=new ArrayList();
-		for( Course i : Constants.CourseObjects){
+		for( Course i : CourseObjects){
 			if(i.isSelected()){
 				InstrCourseStats temp=new InstrCourseStats(i.getCode());
 				ics.add(temp);

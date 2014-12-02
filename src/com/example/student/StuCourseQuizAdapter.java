@@ -1,4 +1,4 @@
-package com.example.rewise;
+package com.example.student;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,16 +13,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class CourseQuizAdapter extends BaseExpandableListAdapter{
+import com.example.rewise.Course;
+import com.example.rewise.Quiz;
+import com.example.rewise.R;
+
+public class StuCourseQuizAdapter extends BaseExpandableListAdapter{
 	private ArrayList<Course> parents;
 	public static int ParentClickStatus=-1;
     public static int ChildClickStatus=-1;
     
     private LayoutInflater inflater;
 
-    public CourseQuizAdapter(ArrayList<Course> p,Context context)
+    public StuCourseQuizAdapter(ArrayList<Course> p,Context context)
     {
-        parents=p;
+    	parents=p;
         inflater = LayoutInflater.from(context);
     }
  
@@ -40,6 +44,22 @@ public class CourseQuizAdapter extends BaseExpandableListAdapter{
    			 return R.drawable.live;
    		 }
    	 }
+    }
+    
+    public int getStatus(Date d,Date e){
+    	java.util.Date date = new java.util.Date();
+    	long time = date.getTime();
+    	if(d.compareTo(date)>0){
+    		return 1;
+    	}
+    	else{
+    		if(e.compareTo(date)<0){
+    			return -1;
+    		}
+    		else{
+    			return 0;
+    		}
+    	}
     }
     
     // This Function used to inflate parent rows view
@@ -69,6 +89,8 @@ public class CourseQuizAdapter extends BaseExpandableListAdapter{
     {
         final Course parent = parents.get(groupPosition);
         final Quiz child = parent.getChildren().get(childPosition);
+        if(getStatus(child.getStarttime(), child.getEndtime())<0)
+        	return null;
          
         // Inflate childrow.xml file for child rows
         convertView = inflater.inflate(R.layout.list_item_quiz, parentView, false);

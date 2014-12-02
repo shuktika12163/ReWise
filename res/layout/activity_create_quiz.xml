@@ -162,6 +162,7 @@
         android:layout_height="wrap_content"
         android:text="Create Quiz"
         android:textColor="#FFFFFF"
+        android:onClick="createQuiz"
         android:textStyle="bold|italic" />
 
 </LinearLayout>

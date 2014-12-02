@@ -26,6 +26,7 @@ public class Quiz {
 	boolean isInDB;
 	boolean isTimed;
 	static ArrayList<Quiz> al;
+	String CID;
 	
 	//static boolean received=false;
 	static boolean once=false;
@@ -44,6 +45,7 @@ public class Quiz {
 		this.isTimed=false;
 		this.questions=new ArrayList<Question>();
 		this.isInDB=false;
+		this.CID="";
 		al.add(this);
 	}
 	
@@ -160,6 +162,31 @@ public class Quiz {
         }
 		return null;
 	}
+	
+	public static Quiz downloadQuizFromDB(String objectId)
+	{
+		ParseQuery<ParseObject> queryQuiz = new ParseQuery<ParseObject>("Quizzes");
+		queryQuiz.whereEqualTo("objectId", objectId);
+		try {
+			List<ParseObject> lParseQuizzes = queryQuiz.find();
+			if(lParseQuizzes.size()==0)
+				return null;
+			ParseObject poQuiz = lParseQuizzes.get(0); 
+			Quiz quiz = new Quiz();
+			quiz.setCode(poQuiz.getString("Code"));
+			quiz.setName(poQuiz.getString("Name"));
+			quiz.setTimed(poQuiz.getBoolean("isTimed"));
+			quiz.setStarttime(poQuiz.getDate("StartTime"));
+			quiz.setEndtime(poQuiz.getDate("EndTime"));
+			quiz.set_id(poQuiz.getObjectId());
+			quiz.isInDB=true;
+			return quiz;
+		} catch (ParseException e) {
+			Log.e("Error", e.getMessage(),e);
+			e.printStackTrace();
+		}
+		return null;
+	}
 		
 	public boolean uploadToDB()
 	{
@@ -175,10 +202,14 @@ public class Quiz {
 		try{
 			Log.d("asd","started saving");
 			obj.save();
-			Log.d("asd","done saving");
+			Log.d("asd","done saving, starting mapping");
+			ParseObject po=new ParseObject("MapCourseQuiz");
+			po.put("CourseID", this.CID);
+			po.put("QuizID", obj.getObjectId());
+			po.save();
 		}
 		catch(Exception e){
-			Log.d("asd","err saving");
+			Log.e("asd","err saving",e);
 			return false;
 		}
 		this.isInDB=true;
@@ -234,6 +265,14 @@ public class Quiz {
 
 	public void set_id(String _id) {
 		this._id = _id;
+	}
+
+	public String getCID() {
+		return CID;
+	}
+
+	public void setCID(String cID) {
+		CID = cID;
 	}
 	
 }

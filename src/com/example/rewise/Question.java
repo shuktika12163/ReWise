@@ -17,6 +17,7 @@ public class Question {
 	boolean isSingle;
 	ArrayList<Integer> correct;
 	boolean isInDB;
+	boolean selected;
 	String explanation;
 	static ArrayList<Question> al;
 	static boolean once=false;
@@ -35,6 +36,7 @@ public class Question {
 		this.isSingle=true;
 		this.correct=new ArrayList<Integer>();
 		this.isInDB=false;
+		this.selected=false;
 		this.setExplanation("");
 		al.add(this);
 	}
@@ -198,6 +200,27 @@ public class Question {
 		
 		return null;
 	}
+	
+	public static List<Question> downloadAllQsFromDB()
+	{
+		List<Question> lQs=new ArrayList<Question>();
+		ParseQuery<ParseObject> queryGetQs = new ParseQuery<ParseObject>("Questions");
+		
+		ArrayList<ParseObject> gettingQsParse;
+		try {
+			gettingQsParse = (ArrayList<ParseObject>) queryGetQs.find();
+			for(ParseObject parseObject:gettingQsParse)
+			{
+				Question question=new Question();
+				question.ParseQuestion(parseObject);
+				lQs.add(question);
+			}
+			return lQs;
+		} catch (ParseException e) {
+		}
+		
+		return null;
+	}
 
 	public String get_id() {
 		return _id;
@@ -213,6 +236,15 @@ public class Question {
 
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
+	}
+
+	public void setSelected(boolean checked) {
+		this.selected=checked;
+		
+	}
+
+	public boolean isSelected() {
+		return this.selected;
 	}
 	
 }

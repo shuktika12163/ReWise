@@ -7,9 +7,12 @@ import java.util.Collections;
 import java.util.Date;
 
 import com.example.rewise.Question;
+import com.example.rewise.Quiz;
 import com.example.rewise.R;
+import com.example.rewise.globalVariables;
 import com.example.rewise.R.id;
 import com.example.rewise.R.layout;
+import com.example.tobedeleted.MockStatModel;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -39,6 +42,7 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 	
 	static TextView tv,tvTime;
 	static ArrayList<Question> alQ;
+	static ArrayList<int[]> alResponses;
 	static int countAttempted=0;
 	private static AttemptQuestionFragment curFrag;
 	static boolean[] isCorrect;
@@ -59,11 +63,15 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 			long id) {
 	}
 	
-	
+	Quiz quiz;
 	public void init()
 	{
+		quiz=globalVariables.quiz;
+		globalVariables.QID=quiz.getCode();//hardcoding QID
 		alQ=new ArrayList<Question>();
-		initQ();
+		quiz.downloadQsFromDB();
+		alQ=quiz.getQuestions();//initQ();
+		alResponses=new ArrayList<int[]>(); for(int i=0;i<alQ.size();i++){alResponses.add(new int[]{});}
 		countAttempted=-1;
 		NUM_PAGES=alQ.size();
 		frags=new AttemptQuestionFragment[NUM_PAGES];
@@ -140,6 +148,7 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 	public static void checkAnswer(int position, ArrayList<Integer> myAnswers)
 	{
 		ArrayList<Integer> correctAnswers=alQ.get(position).getCorrectAnswers();
+		alResponses.set(position, convertArrayListToArray(myAnswers));
 		if(correctAnswers.size()!=myAnswers.size())
 		{
 			isCorrect[position]=false;
@@ -272,9 +281,31 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 		markAnswers();
 		//onPageSelected(mPager.getCurrentItem());
 		mPager.setCurrentItem(0);
+		uploadStats();
 	}
 	
 	
+	public void uploadStats()
+	{
+		ArrayList<MockStatModel> alStat=new ArrayList<MockStatModel>();
+		for(int i=0;i<alQ.size();i++)
+		{
+			MockStatModel mod=new MockStatModel();
+			mod.setUID(globalVariables.UID);
+			mod.setQID(alQ.get(i).get_id());
+			mod.setQuizName("Quiz Name");
+			mod.setCID("CSE535");
+			mod.setCourseName("Mobile Computing");
+			mod.setZID("zId");
+			mod.setCorrect(convertArrayListToArray(alQ.get(i).getCorrectAnswers()));
+			mod.setResponse(alResponses.get(i));
+			mod.setDesignation(false);
+			mod.setCorrect(isCorrect[i]);
+			alStat.add(mod);
+		}
+		MockStatModel.uploadStats(alStat);
+	}
+
 	Date starttime;
 	Date endtime;
 	Handler h;
@@ -412,5 +443,15 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 //			}
 //		}
 //	}
+	
+	public static int[] convertArrayListToArray(ArrayList<Integer> al)
+	{
+		int[] x=new int[al.size()];
+		for(int i=0;i<al.size();i++)
+		{
+			x[i]=al.get(i);
+		}
+		return x;
+	}
 	
 }

@@ -1,21 +1,20 @@
 package com.example.instuctor;
 
 import java.util.Calendar;
-
-import com.example.rewise.R;
-import com.example.rewise.R.color;
-import com.example.rewise.R.id;
-import com.example.rewise.R.layout;
+import java.util.Date;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -24,6 +23,10 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.example.rewise.Quiz;
+import com.example.rewise.R;
+import com.example.rewise.globalVariables;
  
 @SuppressLint("ResourceAsColor")
 public class InstrCreateQuizScreen extends Activity{
@@ -46,6 +49,9 @@ public class InstrCreateQuizScreen extends Activity{
 	private EditText quizname;
 	private EditText quizcode;
 	private Spinner sp;
+	
+	String[] str= {"CSE400","ECO302","ECE222","CSE121","CSE200","CSE535"};
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -62,6 +68,7 @@ public class InstrCreateQuizScreen extends Activity{
 		quizname=(EditText)findViewById(R.id.nameofquiz);
 		quizcode=(EditText)findViewById(R.id.quizcode);
 		sp=(Spinner)findViewById(R.id.coursecode);
+		sp.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, str));
 		final Calendar c = Calendar.getInstance();
         currentYear = c.get(Calendar.YEAR);
         currentMonth = c.get(Calendar.MONTH);
@@ -131,4 +138,29 @@ public class InstrCreateQuizScreen extends Activity{
         }
     };
 
+    @SuppressWarnings("deprecation")
+	public void createQuiz(View v)
+    {
+    	Quiz quiz=new Quiz();
+    	quiz.setCID(sp.getSelectedItem().toString());
+    	quiz.setCode(quizcode.getText().toString());
+    	Date dt=new Date();
+    	String[] s=setdate.getText().toString().split("/");
+    	Log.d("asd",s[0]+" "+s[1]+ " "+s[2]);
+    	dt.setMonth(Integer.parseInt(s[0])-1);
+    	dt.setDate(Integer.parseInt(s[1]));
+    	dt.setYear(Integer.parseInt(s[2])-1900);
+    	s=settime.getText().toString().split(":");
+    	dt.setHours(Integer.parseInt(s[0]));
+    	dt.setMinutes(Integer.parseInt(s[1]));
+    	dt.setSeconds(0);
+    	quiz.setStarttime(dt);
+    	quiz.setDuration(0, duration);
+    	quiz.setName(quizname.getText().toString());
+    	quiz.setTimed(true);
+    	quiz.uploadToDB();
+    	globalVariables.quiz=quiz;
+    	startActivity(new Intent(this,InstrSelectQuestionScreen.class));
+    }
+    
 }

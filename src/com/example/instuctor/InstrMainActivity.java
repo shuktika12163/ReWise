@@ -1,5 +1,7 @@
 package com.example.instuctor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -27,10 +29,12 @@ import com.example.rewise.Course;
 import com.example.rewise.CourseManagementFragment;
 import com.example.rewise.NavBarAdapter;
 import com.example.rewise.R;
+import com.example.rewise.User;
 import com.example.rewise.globalVariables;
 import com.example.student.StuCourseStatsScreen;
 import com.example.student.StuQuizStatsScreen;
 import com.example.tobedeleted.Constants;
+import com.parse.Parse;
 
 public class InstrMainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
@@ -44,14 +48,40 @@ public class InstrMainActivity extends Activity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mnavdrawerTitles;
-    public Set<Course> courseobjects;
+    public static List<Course> courseobjects;
+    public static User user;
+    public static boolean once=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instr_main);
+        Parse.initialize(this, "d6b9vOQMQh333RxqJwDJzUtTuig6uNy15Lh8SzFf", "6MeNeaoCQsFOEjjFRZLbc8ST1TO3BNMb8hlUGTRK");
         Intent view = getIntent();
 		String email_id = view.getStringExtra("email_id");
+		user=new User(email_id,true);
+		globalVariables.designation=true;
+		courseobjects=Course.downloadAllCoursesFromDB();
+		for(Course each: courseobjects)
+		{
+			each.setSelected(false);
+			for(String each2 : user.getAlCourses())
+			{
+				if(each.getCode().equals(each2))
+					each.setSelected(true);
+			}
+		}
+		/*courseobjects.get(0).setSelected(true);*/
+		for(Course each: courseobjects)
+		{
+			each.downloadQuizzes();
+		}
+		once=true;
 		globalVariables.UID=email_id;
+		List<String> userCourses=new ArrayList<String>();
+		for(Course course:courseobjects)
+			if(course.isSelected())
+				userCourses.add(course.getCode());
+		InstrMainActivity.user.modifyCourses(userCourses);
 		Toast.makeText(InstrMainActivity.this, "Email is "+ email_id, Toast.LENGTH_SHORT).show();
 		/*
 		 * Use Email to get Courses from Parse and put it into courses

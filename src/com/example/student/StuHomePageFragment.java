@@ -1,15 +1,9 @@
 package com.example.student;
 import java.util.ArrayList;
-
-import com.example.rewise.Course;
-import com.example.rewise.CourseQuizAdapter;
-import com.example.rewise.Quiz;
-import com.example.rewise.R;
-import com.example.rewise.R.drawable;
-import com.example.rewise.R.id;
-import com.example.rewise.R.layout;
+import java.util.List;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -20,19 +14,29 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageView;
+
+import com.example.livequiz.AttemptQuizActivity;
+import com.example.rewise.Course;
+import com.example.rewise.Quiz;
+import com.example.rewise.R;
+import com.example.rewise.globalVariables;
+import com.parse.Parse;
 
 public class StuHomePageFragment extends Fragment implements OnItemClickListener{
 	
 	ExpandableListView lv;
-	CourseQuizAdapter adapter;
+	StuCourseQuizAdapter adapter;
 	ImageView fab;
-	
+		
 	private ArrayList<Course> parents;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Parse.initialize(getActivity(), "d6b9vOQMQh333RxqJwDJzUtTuig6uNy15Lh8SzFf", "6MeNeaoCQsFOEjjFRZLbc8ST1TO3BNMb8hlUGTRK");
 		super.onCreate(savedInstanceState);
 		
 	}
@@ -50,67 +54,17 @@ public class StuHomePageFragment extends Fragment implements OnItemClickListener
      * here should come your data service implementation
      * @return
      */
-    private ArrayList<Course> buildDummyData()
+    private ArrayList<Course> populate()
     {
         // Creating ArrayList of type parent class to store parent class objects
         final ArrayList<Course> list = new ArrayList<Course>();
-        for (int i = 1; i < 4; i++)
+        StuMainActivity im= (StuMainActivity)getActivity();
+        List<Course> CourseObjects=StuMainActivity.courseobjects;//Constants.CourseObjects
+        for (Course i: CourseObjects)
         {
-            //Create parent class object
-            final Course parent = new Course();
-             
-              // Set values in parent class object
-                  if(i==1){
-                      parent.setName("Course" + i);
-                      parent.setCode("Parent 0");
-                      parent.setChildren(new ArrayList<Quiz>());
-                       
-                      // Create Child class object
-                      final Quiz child = new Quiz();
-                        child.setName("Quiz" + i);
-                        child.setCode("Child 0");
-                         
-                        //Add Child class object to parent class object
-                        parent.getChildren().add(child);
-                    }
-                   else if(i==2){
-                       parent.setName("Course" + i);
-                       parent.setCode("Parent 1");
-                       parent.setChildren(new ArrayList<Quiz>());
-                        
-                       final Quiz child = new Quiz();
-                        child.setName("Quiz" + i);
-                        child.setCode("Child 0");
-                        parent.getChildren().add(child);
-                       final Quiz child1 = new Quiz();
-                        child1.setName("Quiz" + i);
-                        child1.setCode("Child 1");
-                        parent.getChildren().add(child1);
-                     }
-                   else if(i==3){
-                       parent.setName("Course" + i);
-                       parent.setCode("Parent 2");
-                       parent.setChildren(new ArrayList<Quiz>());
-                        
-                       final Quiz child = new Quiz();
-                        child.setName("Quiz" + i);
-                        child.setCode("Child 0");
-                        parent.getChildren().add(child);
-                       final Quiz child1 = new Quiz();
-                        child1.setName("Quiz" + i);
-                        child1.setCode("Child 1");
-                        parent.getChildren().add(child1);
-                      final Quiz child2 = new Quiz();
-                        child2.setName("Quiz" + i);
-                        child2.setCode("Child 2");
-                        parent.getChildren().add(child2);
-                       final Quiz child3 = new Quiz();
-                        child3.setName("Quiz" + i);
-                        child3.setCode("Child 3");
-                        parent.getChildren().add(child3);
-                      }
-            //Adding Parent class object to ArrayList        
-            list.add(parent);
+            if (i.isSelected()==true){
+            	list.add(i);
+            }
         }
         return list;
     }
@@ -124,7 +78,7 @@ public class StuHomePageFragment extends Fragment implements OnItemClickListener
          
         if (lv.getExpandableListAdapter() == null)
         {
-            adapter = new CourseQuizAdapter(parents,getActivity().getApplicationContext());
+            adapter = new StuCourseQuizAdapter(parents,getActivity().getApplicationContext());
             lv.setAdapter(adapter);
         }
         else
@@ -160,6 +114,19 @@ public class StuHomePageFragment extends Fragment implements OnItemClickListener
 		lv=(ExpandableListView)getView().findViewById(R.id.updates);
 		lv.setAdapter(adapter);
 		lv.setOnItemClickListener(this);
+		lv.setOnChildClickListener(new OnChildClickListener() {
+			
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
+				final Quiz selected = (Quiz) adapter.getChild(
+                        groupPosition, childPosition);
+				globalVariables.quiz=selected;
+				startActivity(new Intent(getActivity(),AttemptQuizActivity.class));
+				return true;
+			}
+		});
+		
 		Resources res = this.getResources();
         Drawable devider = res.getDrawable(R.drawable.listgrad);
         lv.setGroupIndicator(null);
@@ -167,14 +134,29 @@ public class StuHomePageFragment extends Fragment implements OnItemClickListener
         lv.setChildDivider(devider);
         lv.setDividerHeight(1);
         registerForContextMenu(lv);
-        final ArrayList<Course> dummyList = buildDummyData();
-        loadHosts(dummyList);
+        final ArrayList<Course> contents = populate();
+        loadHosts(contents);
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		// TODO Auto-generated method stub
-		
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		if(StuMainActivity.once)
+		{
+			StuMainActivity.once=false;
+			return;
+		}
+		for(Course each: StuMainActivity.courseobjects)
+		{
+			each.downloadQuizzes();
+		}
+		adapter.notifyDataSetChanged();
+	}
+	
+	
 }
