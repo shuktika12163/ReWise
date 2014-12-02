@@ -92,6 +92,7 @@ public class StuQuestionBankFragment extends Fragment implements OnItemClickList
                 return false;
             }
         });
+		fab.setVisibility(fab.GONE);
 	}
 	
 	ProgressDialog pd;

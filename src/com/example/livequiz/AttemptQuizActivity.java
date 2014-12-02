@@ -200,6 +200,11 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {
+        	if(handlerNeeded)
+        	{
+        		submitQuiz();
+        		return;
+        	}
             // If the user is currently looking at the first step, allow the system to handle the
             // Back button. This calls finish() on this activity and pops the back stack.
             super.onBackPressed();
@@ -247,6 +252,7 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 	boolean hasSubmitted=false;
 	public void submitQuiz()
 	{
+		handlerNeeded=false;
 		getCurFrag().sendForChecking();
 		countScore=0;
 		for(int i=0;i<isCorrect.length;i++)
@@ -327,7 +333,9 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 	{
 		handlerNeeded=true;
 		starttime=Calendar.getInstance().getTime();
-		setDuration(0, 10, 0);
+		long t1=starttime.getTime();long t2=quiz.getEndtime().getTime();
+		long d=t2-t1; d/=1000;
+		setDuration(0, 0, (int)d);
 		setRemainingTime();
 		h=new Handler();
 		h.postDelayed(new Runnable() {
@@ -335,12 +343,12 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 			@Override
 			public void run() {
 				setRemainingTime();
-//				if(!handlerNeeded)
-//					return;
-//				if(hms.hr>0 || hms.min>0 || hms.sec>0)
+				if(!handlerNeeded)
+					return;
+				if(hms.hr>0 || hms.min>0 || hms.sec>0)
 					h.postDelayed(this, 1000);
-//				else
-//					onClick(findViewById(R.id.btnSubmit));
+				else
+					submitQuiz();
 			}
 		}, 1000);
 	}

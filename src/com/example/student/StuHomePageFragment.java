@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -136,6 +137,7 @@ public class StuHomePageFragment extends Fragment implements OnItemClickListener
         registerForContextMenu(lv);
         final ArrayList<Course> contents = populate();
         loadHosts(contents);
+        fab.setVisibility(fab.GONE);
 	}
 
 	@Override
