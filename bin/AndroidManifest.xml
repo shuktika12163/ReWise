@@ -53,16 +53,7 @@
             android:label="Selects Questions" >
         </activity>
 
-        <activity
-          android:name="com.example.statistics.InstrCourseStats"
-            android:label="Course Statistics" >
-        </activity>
-        
-        <activity
-          android:name="com.example.statistics.InstrQuizStats"
-            android:label="Quiz Statistics" >
-        </activity>
-        
+               
         <activity
           android:name="com.example.instuctor.InstrCourseStatsScreen"
             android:label="Course Statistics" >
@@ -99,38 +90,33 @@
         
         
                 <activity
-            android:name="com.example.instuctor.StuShowQuiz"
+            android:name="com.example.student.StuShowQuiz"
             android:label="Your Quizzes" >
         </activity>
         
         <activity
-            android:name="com.example.instuctor.StuSelectQuestionScreen"
+            android:name="com.example.student.StuSelectQuestionScreen"
             android:label="Selects Questions" >
         </activity>
 
         <activity
-          android:name="com.example.statistics.StuCourseStats"
+          android:name="com.example.student.StuCourseStats"
+            android:label="Course Statistics" >
+        </activity>
+                
+        <activity
+          android:name="com.example.student.StuCourseStatsScreen"
             android:label="Course Statistics" >
         </activity>
         
         <activity
-          android:name="com.example.statistics.StuQuizStats"
+          android:name="com.example.student.StuQuizStatsScreen"
             android:label="Quiz Statistics" >
         </activity>
         
         <activity
-          android:name="com.example.instuctor.StuCourseStatsScreen"
-            android:label="Course Statistics" >
-        </activity>
-        
-        <activity
-          android:name="com.example.instuctor.StuQuizStatsScreen"
+            android:name="com.example.student.StuQuizStatsOverviewScreen"
             android:label="Quiz Statistics" >
-        </activity>
-        
-        <activity
-            android:name="com.example.instuctor.StuQuizStatsOverviewScreen"
-            android:label="Question Addition" >
         </activity>
         
         

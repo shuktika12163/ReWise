@@ -50,6 +50,7 @@ public class InstrQuizStatsOverviewScreen extends Activity implements OnItemClic
 			}
 		}
 		globalVariables.QStatistics=iqs;
+		Log.d("new","iqs   len     "+iqs.size());
 		adapter=new InstrQuizStatsOverviewAdapter(this, iqs);
 		lv=(ListView)findViewById(R.id.listview4);
 		lv.setAdapter(adapter);

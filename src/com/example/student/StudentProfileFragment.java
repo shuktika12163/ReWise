@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.rewise.R;
 import com.example.rewise.globalVariables;
-import com.example.tobedeleted.Constants;
 
 /*
  * Show a List view of all the Courses with some overview Statistics
@@ -22,6 +22,7 @@ public class StudentProfileFragment extends Fragment{
 	StuCourseStatsOverviewAdapter adapter;
 	ListView lv;
 	TextView email;
+	ImageView im;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -32,6 +33,7 @@ public class StudentProfileFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v=inflater.inflate(R.layout.fragment_profile, container, false);
+		
 		return v;
 	}
 	
@@ -39,6 +41,8 @@ public class StudentProfileFragment extends Fragment{
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		email=(TextView)getView().findViewById(R.id.email);
+		im=(ImageView) getView().findViewById(R.id.header);
+		im.setImageResource(R.drawable.student);
 		email.setText(globalVariables.UID);
 	}
 }

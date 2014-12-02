@@ -206,6 +206,7 @@ public class Quiz {
 			ParseObject po=new ParseObject("MapCourseQuiz");
 			po.put("CourseID", this.CID);
 			po.put("QuizID", obj.getObjectId());
+			po.put("ZID", this.code);
 			po.save();
 		}
 		catch(Exception e){

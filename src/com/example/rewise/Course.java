@@ -121,6 +121,7 @@ public class Course {
             {
             	Quiz quiz;
             	quiz=Quiz.downloadQuizFromDB(poCourse.getString("QuizID"));
+            	quiz.setCID(this.code);
             	lQuizzes.add(quiz);
             }
             this.setChildren(lQuizzes);

@@ -6,12 +6,15 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
+import com.example.instuctor.InstrMainActivity;
+import com.example.rewise.Course;
 import com.example.rewise.Question;
 import com.example.rewise.Quiz;
 import com.example.rewise.R;
 import com.example.rewise.globalVariables;
 import com.example.rewise.R.id;
 import com.example.rewise.R.layout;
+import com.example.student.StuMainActivity;
 import com.example.tobedeleted.MockStatModel;
 
 import android.app.AlertDialog;
@@ -293,10 +296,10 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 			MockStatModel mod=new MockStatModel();
 			mod.setUID(globalVariables.UID);
 			mod.setQID(alQ.get(i).get_id());
-			mod.setQuizName("Quiz Name");
-			mod.setCID("CSE535");
-			mod.setCourseName("Mobile Computing");
-			mod.setZID("zId");
+			mod.setQuizName(quiz.getName());
+			mod.setCID(quiz.getCID());
+			mod.setCourseName(getName(quiz.getCID()));
+			mod.setZID(quiz.getCode());
 			mod.setCorrect(convertArrayListToArray(alQ.get(i).getCorrectAnswers()));
 			mod.setResponse(alResponses.get(i));
 			mod.setDesignation(false);
@@ -304,6 +307,16 @@ public class AttemptQuizActivity extends FragmentActivity implements OnItemClick
 			alStat.add(mod);
 		}
 		MockStatModel.uploadStats(alStat);
+	}
+
+	private String getName(String cid) {
+		ArrayList<Course> courses=(ArrayList<Course>) StuMainActivity.courseobjects;
+		for(Course each: courses)
+		{
+			if (cid.equals(each.getCode()))
+				return each.getName();
+		}
+		return null;
 	}
 
 	Date starttime;
